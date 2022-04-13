@@ -1,8 +1,8 @@
-/* @property --rotate {
+@property --rotate {
     syntax: "<angle>";
     inherits: false;
     initial-value: 132deg;
-} */
+}
   
 * {
     box-sizing: border-box;

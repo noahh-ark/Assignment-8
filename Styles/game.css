@@ -59,14 +59,13 @@ a.button {
     animation-delay: 1.5s;
 }
 
-body {
-    /* background: none; */
+/* Confetti */
+/* body {
     margin: 0;
     overflow: hidden;
 }
 .wrapper {
-    z-index: -100;
-    position: absolute;
+    position: relative;
     min-height: 100vh;
 }
 [class|="confetti"] {
@@ -80,7 +79,7 @@ body {
 }
 .blue {
     background-color: #263672;
-}
+} */
 
 .loader {
     display: flex;

@@ -29,6 +29,12 @@
 <body class="profile">
     <header>
         <nav>
+            <div class="menu-icon">
+                <svg viewbox="0 0 60 60">
+                  <line x1="5%" y1="50%" x2="95%" y2="50%" />
+                  <line x1="5%" y1="50%" x2="95%" y2="50%" />
+                </svg>
+              </div>
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../Game/index.html">Game</a></li>
@@ -53,5 +59,10 @@
 
 
     </main>
+    <script>
+        document.querySelector(".menu-icon").addEventListener("click", function () {
+            this.parentElement.classList.toggle("close");
+        });
+    </script>
 </body>
 </html>

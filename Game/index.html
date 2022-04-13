@@ -11,6 +11,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Styles/main.css">
+    <link rel="stylesheet" href="../Styles/game.css">
+
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="./Favicon/apple-touch-icon.png">
@@ -27,6 +29,7 @@
 
 </head>
 <body class="game">
+    <div class="wrapper"></div>
     <header>
         <nav>
             <div class="menu-icon">
@@ -50,17 +53,74 @@
 
     <main>
         <div class="loader">
-            <!-- <p>Loading...</p> -->
             <img class="turtle" src="../Images/Icons/Loader-Turtle.png" width="100" alt="Tom the turtle">
             <img class="apple" src="../Images/Icons/Loader-Apple.png" width="30" alt="Apple">
             <p>Loading...</p>
         </div>
-
+        <div class="playspace">
+            <img class="player" class="turn-right-down" class="turn-left-up" src="../Images/Icons/Turtle-Icon-5.png" alt="Player's Turtle">
+            <a class="button">Play</a>
+            <img class="goal" src="../Images/Icons/Apple-Icon.png" width="30" alt="Goal Apple">
+        </div>
+        
     </main>
     <script>
         document.querySelector(".menu-icon").addEventListener("click", function () {
             this.parentElement.classList.toggle("close");
         });
+
+        document.querySelector(".button").addEventListener("click", function () {
+            this.parentElement.classList.toggle("gone");
+        });
+
+        for (var i = 0; i < 150; i++) {
+            create(i);
+        }
+
+        function create(i) {
+            var width = Math.random() * 8;
+            var height = width * 0.4;
+            var colourIdx = Math.ceil(Math.random() * 3);
+            var colour = "red";
+            switch(colourIdx) {
+                case 1:
+                colour = "yellow";
+                break;
+                case 2:
+                colour = "blue";
+                break;
+                default:
+                colour = "red";
+            }
+            $('<div class="confetti-'+i+' '+colour+'"></div>').css({
+                "width" : width+"px",
+                "height" : height+"px",
+                "top" : -Math.random()*20+"%",
+                "left" : Math.random()*100+"%",
+                "opacity" : Math.random()+0.5,
+                "transform" : "rotate("+Math.random()*360+"deg)"
+            }).appendTo('.wrapper');  
+            
+            drop(i);
+        }
+
+        function drop(x) {
+            $('.confetti-'+x).animate({
+                top: "100%",
+                left: "+="+Math.random()*15+"%"
+            }, Math.random()*2000 + 2000, function() {
+                reset(x);
+            });
+        }
+
+        function reset(x) {
+            $('.confetti-'+x).animate({
+                "top" : -Math.random()*20+"%",
+                "left" : "-="+Math.random()*15+"%"
+            }, 0, function() {
+                drop(x);             
+            });
+        }
     </script>
 </body>
 </html>
